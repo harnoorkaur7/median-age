@@ -23,15 +23,15 @@ x <- get_decennial(geography = "county",
 ```
 
 ```{r}
-summary(x)
+#| message: false
 x |>
   ggplot(aes(x = med_age_male, y = med_age_female)) +
-    geom_point(aes(color = "darkred")) +
+    geom_point(aes(color = "darkblue")) +
     theme_classic() +
-    labs(title = "Median Age in US Counties",
-         subtitle = "Male and Female Ages move fairly proportionately",
+    labs(subtitle = "Some Counties are very far apart in M-F Proportion",
          x = "Median Male Age",
-         y = "Median Female Age")
-  
+         y = "Median Female Age") +
+    geom_smooth(se = FALSE, color = "black") +
+    theme(legend.position = "none")
 
 ```
